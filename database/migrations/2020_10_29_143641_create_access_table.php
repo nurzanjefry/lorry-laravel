@@ -19,9 +19,9 @@ class CreateAccessTable extends Migration
             $table->string('role_id');
             $table->boolean('active');
             $table->string('remarks')->nullable();
-            $table->timestamps('created_at')->nullable();
+            $table->timestamp('created_at')->nullable();
             $table->string('created_id')->nullable();
-            $table->timestamps('deleted_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->string('deleted_id')->nullable();
         });
     }

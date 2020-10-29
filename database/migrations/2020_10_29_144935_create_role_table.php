@@ -18,11 +18,11 @@ class CreateRoleTable extends Migration
             $table->integer('role');
             $table->string('remarks');
             $table->boolean('active');
-            $table->timestamps('created_at');
+            $table->timestamp('created_at');
             $table->string('created_id');
-            $table->timestamps('updated_at');
-            $table->string('updated_id');
-            $table->timestamps('deleted_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->string('updated_id')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->string('deleted_id')->nullable();
         });
     }
