@@ -15,6 +15,8 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->string('post_id');
+            $table->string('user_id');
             $table->string('comment');
             $table->boolean('active');
             $table->timestamp('created_at');
@@ -36,3 +38,4 @@ class CreateCommentsTable extends Migration
         Schema::dropIfExists('comments');
     }
 }
+

@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->boolean('posted');
+            $table->string('user_id');
             $table->timestamp('created_at');
             $table->string('created_id');
             $table->timestamp('updated_at')->nullable();
