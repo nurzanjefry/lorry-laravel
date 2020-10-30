@@ -14,19 +14,29 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'User1',
-            'role' => 1,
             'email' => 'admin@admin.com',
             'password' => Hash::make('admin'),
             'created_at' => Carbon::now(),
             'created_id' => 0,
         ]);
 
-        DB::table('users')->insert([
+        DB::table('roles')->insert([
             'role' => 1,
             'remarks' => 'admin',
             'active' => true,
             'created_at' => Carbon::now(),
             'created_id' => 0,
         ]);
+
+        DB::table('access')->insert([
+            'user_id' => 1,
+            'role_id' => 1,
+            'remarks' => 'admin',
+            'active' => true,
+            'created_at' => Carbon::now(),
+            'created_id' => 0,
+        ]);
+
+       
     }
 }

@@ -8,6 +8,8 @@ class Access extends Model
 {
     protected $table = 'access';
 
+    protected $primaryKey = 'user_id';
+
     public $incrementing = true;
 
     protected $dates = ['created_at','updated_at','deleted_at'];
