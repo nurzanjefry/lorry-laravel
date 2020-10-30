@@ -1,11 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Repository;
 
-use Validator;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+
 
 class LoginController extends Controller
 {
@@ -33,14 +30,8 @@ class LoginController extends Controller
                     ->withInput();
         }
 
-        //check user
-        $user = User::where('name',$request->username)->first();
-        if (Hash::check($request->password, $user->password)) {
-            session()->put('u_i', $user->id);
-            session()->put('u_n', $user->name);
-            return redirect('/post/index');
-        } else {
-            return redirect('/login');
-        }
+        //authenticate user
+        
+        dd($request->all());
     }
 }

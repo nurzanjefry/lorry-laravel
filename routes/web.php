@@ -17,13 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('settings/sponsor/', 'SponsorController@showSponsor')->name('finance_code.sponsor');
-
 Route::get('/login', 'LoginController@Login')->name('login');
 Route::post('/loginNow', 'LoginController@loginNow')->name('loginNow');
-Route::get('/post', function () {
-    return view('post.post');
-})->name('post');
-Route::get('/sidebar', function () {
-    return view('include.sidebar');
-})->name('sidebar');
+
+Route::get('/post/index', 'PostController@indexPost')->name('post.index');
+Route::post('/post/create', 'PostController@createPost')->name('post.create');
+Route::post('/comment/create', 'CommentController@createComment')->name('comment.create');

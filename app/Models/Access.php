@@ -1,21 +1,23 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Access extends Model
 {
-    protected $table = 'posts';
+    protected $table = 'access';
+
+    protected $primaryKey = 'user_id';
 
     public $incrementing = true;
 
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     protected $fillable = [ 
-                            'title', 
-                            'content', 
-                            'posted', 
+                            'user_id', 
+                            'role_id', 
+                            'active', 
                             'remarks', 
                             'created_at', 
                             'created_id', 

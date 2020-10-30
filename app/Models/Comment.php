@@ -1,20 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Comment extends Model
 {
-    protected $table = 'roles';
+    protected $table = 'comments';
 
     public $incrementing = true;
 
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     protected $fillable = [ 
-                            'role', 
-                            'remarks', 
+                            'comment', 
                             'active', 
                             'remarks', 
                             'created_at', 
