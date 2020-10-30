@@ -15,6 +15,7 @@ class CommentController extends Controller
         $validator = Validator::make($request->all(), [
             'comment'    => 'required|string|min:5|max:100',
             'created_id' => 'required|integer',
+            'post_id'    => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -22,7 +23,7 @@ class CommentController extends Controller
                     ->withErrors($validator)
                     ->withInput();
         }
-        $user = session()->get('u_i');
+
         $request['active'] = true;
         unset($request['_token']);
         $modelInstance = Comment::create($request->all());
