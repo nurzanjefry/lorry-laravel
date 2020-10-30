@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
