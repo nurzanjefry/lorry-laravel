@@ -10,6 +10,19 @@
 	<div class="row">
 		<div class="col-md-12">
       <div class="card-deck">
+      @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+            <span class="fas fa-times"></span></button>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>
+                    <strong>{{ $error }}</strong>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
         @if(count($posts))
           @foreach($posts as $post)
           <div class="card inside-card">
@@ -20,33 +33,36 @@
               <h5 class="card-title">{{ $post->title }}</h5>
               <p class="card-text">{{ $post->content }}</p>
               <a href="#" class="btn btn-danger float-right">Delete</a>
+              @foreach($post->comments as $comment)
               <div class="row">
                 <ul>
                   <li>
-                    <small><b>Hedenrt Commented</b></small></br>
-                    <small> Heeww why are there</small>
+                    <small><b>{{ $comment->comment }}</b></small></br>
+                    <small>{{ $comment->comment }}</small>
                   </li>
                 </ul>
               </div>
-              <div>
-                <div class="container-fluid">
-                <form method="post" action="{{ route('post.create') }}" autocomplete="off" class="col-md-12">
-                  @csrf
-                  <div class="row">
-                    <div class="col">
-                      <input type="text" class="form-control small-input" id="created_id" name="comment" value="" placeholder="Type your comment..." style="height: 30px !important;font-size: smaller;">
-                      <input type="text" class="form-control small-input" id="created_id" name="create_id" value="{{ $user->id }}" hidden>
-                    </div>
-                    <div class="col">
-                      <button type="submit" class="btn btn-secondary btn-sm"><small>Post</small></button>
-                    </div>
+              @endforeach
+            <div>
+            <div class="container-fluid">
+              <form method="post" action="{{ route('comment.create') }}" autocomplete="off" class="col-md-12">
+                @csrf
+                <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control small-input" id="comment" name="comment" value="" placeholder="Type your comment..." style="height: 30px !important;font-size: smaller;">
+                    <input type="text" class="form-control small-input" id="created_id" name="created_id" value="{{ $user->id }}" hidden>
+                    <input type="text" class="form-control small-input" id="post_id" name="post_id" value="{{ $post->id }}" hidden>
                   </div>
-                </form>
+                  <div class="col">
+                    <button type="submit" class="btn btn-secondary btn-sm"><small>Post</small></button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
-          @endforeach
+        </div>
+      </div>
+        @endforeach
         @endif
       </div>
     </div>
