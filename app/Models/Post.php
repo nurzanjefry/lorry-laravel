@@ -24,4 +24,8 @@ class Post extends Model
                             'deleted_at', 
                             'deleted_id'
                             ];
+
+    public function comments() {
+        return $this->hasMany('App\Models\Comment','post_id','id');
+    }
 }
