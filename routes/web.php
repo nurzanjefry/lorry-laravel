@@ -21,3 +21,9 @@ Route::get('settings/sponsor/', 'SponsorController@showSponsor')->name('finance_
 
 Route::get('/login', 'LoginController@Login')->name('login');
 Route::post('/loginNow', 'LoginController@loginNow')->name('loginNow');
+Route::get('/post', function () {
+    return view('post.post');
+})->name('post');
+Route::get('/sidebar', function () {
+    return view('include.sidebar');
+})->name('sidebar');
